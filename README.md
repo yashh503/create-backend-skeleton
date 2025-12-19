@@ -51,6 +51,8 @@ src/
  ├── utils/
  └── routes.ts
 
+```
+
 Philosophy
 
 Simple > Clever
