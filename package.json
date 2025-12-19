@@ -1,23 +1,42 @@
 {
   "name": "create-backend-skeleton",
-  "version": "1.0.0",
-  "description": "A simple, clean CLI to scaffold production-ready Node.js + Express backends",
+  "version": "1.0.1",
+  "description": "A production-ready Node.js + Express boilerplate generator with auth, validation, and database setup.",
   "bin": {
     "create-backend-skeleton": "./bin/cli.js"
   },
   "scripts": {
     "start": "node bin/cli.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yashh503/create-backend-skeleton"
+  },
+  "homepage": "https://github.com/yashh503/create-backend-skeleton#readme",
+  "bugs": {
+    "url": "https://github.com/yashh503/create-backend-skeleton/issues"
+  },
+  "author": {
+    "name": "Yash Vyas",
+    "url": "https://github.com/yashh503"
+  },
   "keywords": [
-    "cli",
-    "express",
-    "backend",
-    "scaffold",
-    "generator",
     "nodejs",
-    "api"
+    "express",
+    "boilerplate",
+    "backend-boilerplate",
+    "express-boilerplate",
+    "node-backend",
+    "backend-starter",
+    "node-starter",
+    "api-boilerplate",
+    "jwt-auth",
+    "typescript",
+    "cli",
+    "scaffold",
+    "template",
+    "starter-template"
   ],
-  "author": "YASH VYAS",
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
