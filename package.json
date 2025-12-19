@@ -1,0 +1,33 @@
+{
+  "name": "create-backend-skeleton",
+  "version": "1.0.0",
+  "description": "A simple, clean CLI to scaffold production-ready Node.js + Express backends",
+  "main": "src/index.js",
+  "bin": {
+    "create-backend-skeleton": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js"
+  },
+  "keywords": [
+    "cli",
+    "express",
+    "backend",
+    "scaffold",
+    "generator",
+    "nodejs",
+    "api"
+  ],
+  "author": "YASH VYAS",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
