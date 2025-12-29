@@ -136,7 +136,8 @@ program
       console.log(chalk.gray('  └── README.md'));
 
       console.log(chalk.bold.green('\n✅ Happy coding!\n'));
-
+      console.log(chalk.bold.green('કોડિંગ માં કાઈ નથી રાખ્યુ ભાઈ, ધંધો કરો!!'));
+      
     } catch (error) {
       spinner.fail(chalk.red('Failed to create project'));
       console.error(chalk.red(error.message));
