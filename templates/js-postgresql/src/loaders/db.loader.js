@@ -1,9 +1,9 @@
-const { PrismaClient } = require('@prisma/client');
-const logger = require('../utils/logger');
+import { PrismaClient } from '@prisma/client';
+import logger from '../utils/logger.js';
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
-const connect = async () => {
+export const connect = async () => {
   try {
     await prisma.$connect();
     logger.info('Connected to PostgreSQL');
@@ -13,7 +13,7 @@ const connect = async () => {
   }
 };
 
-const disconnect = async () => {
+export const disconnect = async () => {
   try {
     await prisma.$disconnect();
     logger.info('Disconnected from PostgreSQL');
@@ -22,5 +22,3 @@ const disconnect = async () => {
     throw error;
   }
 };
-
-module.exports = { prisma, connect, disconnect };

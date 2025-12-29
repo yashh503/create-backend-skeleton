@@ -1,7 +1,7 @@
-const authService = require('./auth.service');
-const asyncHandler = require('../../utils/asyncHandler');
+import * as authService from './auth.service.js';
+import asyncHandler from '../../utils/asyncHandler.js';
 
-const register = asyncHandler(async (req, res) => {
+export const register = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const result = await authService.register(email, password);
 
@@ -13,7 +13,7 @@ const register = asyncHandler(async (req, res) => {
   });
 });
 
-const login = asyncHandler(async (req, res) => {
+export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const result = await authService.login(email, password);
 
@@ -25,7 +25,7 @@ const login = asyncHandler(async (req, res) => {
   });
 });
 
-const refreshToken = asyncHandler(async (req, res) => {
+export const refreshToken = asyncHandler(async (req, res) => {
   const { refreshToken: token } = req.body;
   const result = await authService.refreshToken(token);
 
@@ -34,9 +34,3 @@ const refreshToken = asyncHandler(async (req, res) => {
     refreshToken: result.refreshToken,
   });
 });
-
-module.exports = {
-  register,
-  login,
-  refreshToken,
-};

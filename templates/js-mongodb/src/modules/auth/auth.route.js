@@ -1,7 +1,7 @@
-const express = require('express');
-const authController = require('./auth.controller');
-const { validate, authenticate } = require('./auth.middleware');
-const { registerSchema, loginSchema, refreshTokenSchema } = require('./auth.schema');
+import express from 'express';
+import * as authController from './auth.controller.js';
+import { validate, authenticate } from './auth.middleware.js';
+import { registerSchema, loginSchema, refreshTokenSchema } from './auth.schema.js';
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.get('/me', authenticate, (req, res) => {
   res.json({ user: req.user });
 });
 
-module.exports = router;
+export default router;

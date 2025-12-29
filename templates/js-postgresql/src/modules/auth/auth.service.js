@@ -1,8 +1,8 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const config = require('../../config');
-const { prisma } = require('../../loaders/db.loader');
-const ApiError = require('../../utils/ApiError');
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import config from '../../config/index.js';
+import { prisma } from '../../loaders/db.loader.js';
+import ApiError from '../../utils/ApiError.js';
 
 const generateAccessToken = (userId) => {
   return jwt.sign({ userId }, config.jwt.accessSecret, {
@@ -30,7 +30,7 @@ const excludePassword = (user) => {
   return userWithoutSensitive;
 };
 
-const register = async (email, password) => {
+export const register = async (email, password) => {
   // Check if user already exists
   const existingUser = await prisma.user.findUnique({ where: { email } });
   if (existingUser) {
@@ -69,7 +69,7 @@ const register = async (email, password) => {
   };
 };
 
-const login = async (email, password) => {
+export const login = async (email, password) => {
   // Find user
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
@@ -99,7 +99,7 @@ const login = async (email, password) => {
   };
 };
 
-const refreshToken = async (token) => {
+export const refreshToken = async (token) => {
   try {
     // Verify refresh token
     const decoded = jwt.verify(token, config.jwt.refreshSecret);
@@ -132,7 +132,7 @@ const refreshToken = async (token) => {
   }
 };
 
-const verifyAccessToken = (token) => {
+export const verifyAccessToken = (token) => {
   try {
     return jwt.verify(token, config.jwt.accessSecret);
   } catch (error) {
@@ -140,15 +140,7 @@ const verifyAccessToken = (token) => {
   }
 };
 
-const getUserById = async (id) => {
+export const getUserById = async (id) => {
   const user = await prisma.user.findUnique({ where: { id } });
   return user ? excludePassword(user) : null;
-};
-
-module.exports = {
-  register,
-  login,
-  refreshToken,
-  verifyAccessToken,
-  getUserById,
 };

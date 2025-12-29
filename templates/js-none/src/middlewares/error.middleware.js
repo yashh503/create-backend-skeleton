@@ -1,6 +1,6 @@
-const config = require('../config');
-const logger = require('../utils/logger');
-const ApiError = require('../utils/ApiError');
+import config from '../config/index.js';
+import logger from '../utils/logger.js';
+import ApiError from '../utils/ApiError.js';
 
 const errorMiddleware = (err, req, res, next) => {
   let error = err;
@@ -29,4 +29,4 @@ const errorMiddleware = (err, req, res, next) => {
   res.status(error.statusCode).json(response);
 };
 
-module.exports = errorMiddleware;
+export default errorMiddleware;

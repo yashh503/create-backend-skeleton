@@ -1,9 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const rateLimit = require('express-rate-limit');
-const routes = require('../routes');
-const errorMiddleware = require('../middlewares/error.middleware');
-const notFoundMiddleware = require('../middlewares/notFound.middleware');
+import express from 'express';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
+import routes from '../routes.js';
+import errorMiddleware from '../middlewares/error.middleware.js';
+import notFoundMiddleware from '../middlewares/notFound.middleware.js';
 
 const expressLoader = (app) => {
   // Trust proxy (for rate limiting behind reverse proxy)
@@ -38,4 +38,4 @@ const expressLoader = (app) => {
   app.use(errorMiddleware);
 };
 
-module.exports = expressLoader;
+export default expressLoader;
