@@ -1,7 +1,7 @@
-const app = require('./app');
-const config = require('./config');
-const logger = require('./utils/logger');
-const dbLoader = require('./loaders/db.loader');
+import app from './app.js';
+import config from './config/index.js';
+import logger from './utils/logger.js';
+import * as dbLoader from './loaders/db.loader.js';
 
 const startServer = async () => {
   try {

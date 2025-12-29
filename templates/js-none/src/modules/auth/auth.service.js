@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const config = require('../../config');
-const ApiError = require('../../utils/ApiError');
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import config from '../../config/index.js';
+import ApiError from '../../utils/ApiError.js';
 
 // In-memory storage
 const users = new Map();
@@ -35,7 +35,7 @@ const excludePassword = (user) => {
   return userWithoutPassword;
 };
 
-const register = async (email, password) => {
+export const register = async (email, password) => {
   // Check if user already exists
   for (const user of users.values()) {
     if (user.email === email) {
@@ -72,7 +72,7 @@ const register = async (email, password) => {
   };
 };
 
-const login = async (email, password) => {
+export const login = async (email, password) => {
   // Find user by email
   let foundUser = null;
   for (const user of users.values()) {
@@ -106,7 +106,7 @@ const login = async (email, password) => {
   };
 };
 
-const refreshToken = async (token) => {
+export const refreshToken = async (token) => {
   try {
     // Verify refresh token
     const decoded = jwt.verify(token, config.jwt.refreshSecret);
@@ -140,7 +140,7 @@ const refreshToken = async (token) => {
   }
 };
 
-const verifyAccessToken = (token) => {
+export const verifyAccessToken = (token) => {
   try {
     return jwt.verify(token, config.jwt.accessSecret);
   } catch (error) {
@@ -148,15 +148,7 @@ const verifyAccessToken = (token) => {
   }
 };
 
-const getUserById = (id) => {
+export const getUserById = (id) => {
   const user = users.get(id);
   return user ? excludePassword(user) : null;
-};
-
-module.exports = {
-  register,
-  login,
-  refreshToken,
-  verifyAccessToken,
-  getUserById,
 };

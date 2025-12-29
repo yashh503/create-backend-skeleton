@@ -1,9 +1,9 @@
-const authService = require('./auth.service');
-const ApiError = require('../../utils/ApiError');
-const asyncHandler = require('../../utils/asyncHandler');
-const User = require('./user.model');
+import * as authService from './auth.service.js';
+import ApiError from '../../utils/ApiError.js';
+import asyncHandler from '../../utils/asyncHandler.js';
+import User from './user.model.js';
 
-const authenticate = asyncHandler(async (req, res, next) => {
+export const authenticate = asyncHandler(async (req, res, next) => {
   // Get token from header
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -26,7 +26,7 @@ const authenticate = asyncHandler(async (req, res, next) => {
   next();
 });
 
-const validate = (schema) => (req, res, next) => {
+export const validate = (schema) => (req, res, next) => {
   const { error } = schema.validate(req.body, { abortEarly: false });
 
   if (error) {
@@ -35,9 +35,4 @@ const validate = (schema) => (req, res, next) => {
   }
 
   next();
-};
-
-module.exports = {
-  authenticate,
-  validate,
 };

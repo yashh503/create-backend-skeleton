@@ -1,7 +1,7 @@
-const jwt = require('jsonwebtoken');
-const config = require('../../config');
-const User = require('./user.model');
-const ApiError = require('../../utils/ApiError');
+import jwt from 'jsonwebtoken';
+import config from '../../config/index.js';
+import User from './user.model.js';
+import ApiError from '../../utils/ApiError.js';
 
 const generateAccessToken = (userId) => {
   return jwt.sign({ userId }, config.jwt.accessSecret, {
@@ -15,7 +15,7 @@ const generateRefreshToken = (userId) => {
   });
 };
 
-const register = async (email, password) => {
+export const register = async (email, password) => {
   // Check if user already exists
   const existingUser = await User.findOne({ email });
   if (existingUser) {
@@ -40,7 +40,7 @@ const register = async (email, password) => {
   };
 };
 
-const login = async (email, password) => {
+export const login = async (email, password) => {
   // Find user
   const user = await User.findOne({ email });
   if (!user) {
@@ -68,7 +68,7 @@ const login = async (email, password) => {
   };
 };
 
-const refreshToken = async (token) => {
+export const refreshToken = async (token) => {
   try {
     // Verify refresh token
     const decoded = jwt.verify(token, config.jwt.refreshSecret);
@@ -97,17 +97,10 @@ const refreshToken = async (token) => {
   }
 };
 
-const verifyAccessToken = (token) => {
+export const verifyAccessToken = (token) => {
   try {
     return jwt.verify(token, config.jwt.accessSecret);
   } catch (error) {
     throw ApiError.unauthorized('Invalid or expired access token');
   }
-};
-
-module.exports = {
-  register,
-  login,
-  refreshToken,
-  verifyAccessToken,
 };

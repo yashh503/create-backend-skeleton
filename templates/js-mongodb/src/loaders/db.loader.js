@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const config = require('../config');
-const logger = require('../utils/logger');
+import mongoose from 'mongoose';
+import config from '../config/index.js';
+import logger from '../utils/logger.js';
 
-const connect = async () => {
+export const connect = async () => {
   try {
     await mongoose.connect(config.mongodbUri);
     logger.info('Connected to MongoDB');
@@ -12,7 +12,7 @@ const connect = async () => {
   }
 };
 
-const disconnect = async () => {
+export const disconnect = async () => {
   try {
     await mongoose.disconnect();
     logger.info('Disconnected from MongoDB');
@@ -21,5 +21,3 @@ const disconnect = async () => {
     throw error;
   }
 };
-
-module.exports = { connect, disconnect };
