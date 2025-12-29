@@ -8,6 +8,7 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio"
   },
@@ -15,7 +16,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "^5.7.1",
+    "@prisma/client": "^7.2.0",
+    "@prisma/pg-adapter": "^7.2.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -23,11 +25,12 @@
     "express-rate-limit": "^7.1.5",
     "joi": "^17.11.0",
     "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.0",
     "pino": "^8.17.2",
     "pino-pretty": "^10.3.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.2",
-    "prisma": "^5.7.1"
+    "prisma": "^7.2.0"
   }
 }
