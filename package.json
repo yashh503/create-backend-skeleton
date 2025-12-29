@@ -1,6 +1,6 @@
 {
   "name": "create-backend-skeleton",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A production-ready Node.js + Express boilerplate generator with auth, validation, and database setup.",
   "bin": {
     "create-backend-skeleton": "./bin/cli.js"
@@ -35,7 +35,8 @@
     "cli",
     "scaffold",
     "template",
-    "starter-template"
+    "starter-template",
+    "ES Modules"
   ],
   "license": "MIT",
   "dependencies": {
