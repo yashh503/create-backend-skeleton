@@ -1,7 +1,12 @@
 import { PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/pg-adapter';
+import pg from 'pg';
 import logger from '../utils/logger.js';
 
-export const prisma = new PrismaClient();
+const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool);
+
+export const prisma = new PrismaClient({ adapter });
 
 export const connect = async () => {
   try {
