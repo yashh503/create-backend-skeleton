@@ -8,6 +8,27 @@ It helps you stop wasting time copy-pasting old projects and start with a **clea
 A clean and opinionated backend starter template for REST APIs built with Node.js and Express.
 ---
 
+
+## Usage
+
+Generate a new backend project:
+
+```bash
+npx create-backend-skeleton my-api
+```
+
+Install dependencies and start development:
+
+```bash
+cd my-api
+npm install
+npm run dev
+```
+
+Your backend is now running.
+
+https://github.com/user-attachments/assets/8afab236-0d04-4b49-a3a5-77370813fc80
+
 ## Why this Node.js & Express boilerplate?
 
 Starting a backend usually means:
@@ -42,24 +63,6 @@ This Express boilerplate exists to give you a **boring, reliable, and developer-
 - Clean, production-ready folder structure
 
 ---
-
-## Usage
-
-Generate a new backend project:
-
-```bash
-npx create-backend-skeleton my-api 
-```
-
-Install dependencies and start development:
-
-```bash
-cd my-api
-npm install
-npm run dev
-```
-
-Your backend is now running.
 
 ## Generated Project Structure
 
